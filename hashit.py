@@ -4,22 +4,18 @@ import click
 import hashlib
 
 def hashMD5(file):
-    ```产生选择文件的MD5校验值```
     value = hashlib.md5(open(file, 'rb').read()).hexdigest()
     return value
 
 def hashSHA1(file):
-    ```产生选择文件的SHA1校验值```
     value = hashlib.sha1(open(file, 'rb').read()).hexdigest()
     return value
 
 def hashSHA256(file):
-    ```产生选择文件的SHA256校验值```
     value = hashlib.sha256(open(file, 'rb').read()).hexdigest()
     return value
 
 def hashSHA512(file):
-    ```产生选择文件的SHA512校验值```
     value = hashlib.sha256(open(file, 'rb').read()).hexdigest()
     return value
 
@@ -48,7 +44,7 @@ def hashit(hash_type, file, output):
     else:
         click.echo('校验值为 %s' % hash_value)
 
-    if output.upper() == 'YES':
+    if output and output.upper() == 'YES':
         f = open('output.txt', 'w')
         f.write('文件 %s 的 %s 校验值为:\n' % (file, hash_type))
         f.write(hash_value + '\n')
